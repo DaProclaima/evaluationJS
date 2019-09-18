@@ -6,17 +6,17 @@
  * @param {number} xAxis
  * @param {number} yAxis
  */
-var GridGenerator = function GridGenerator(xAxis, yAxis) {
+var GridGenerator = function (xAxis, yAxis) {
   this.xAxis = xAxis;
   this.yAxis = yAxis;
-}
+};
 
 /**
  * render
  */
 GridGenerator.prototype.render = function() {
   this.renderGrid();
-}
+};
 
 /**
  * Set interval
@@ -26,7 +26,7 @@ GridGenerator.prototype.setInterval = function(el) {
     el.style.background = this.randomColor();
     this.setInterval(el);
   }.bind(this), 500)
-}
+};
 
 /**
  * GridGenrator
@@ -52,7 +52,7 @@ GridGenerator.prototype.renderGrid = function() {
   }
 
   elBody.appendChild(elTable);
-}
+};
 
 /**
  * randomColor
@@ -62,7 +62,7 @@ GridGenerator.prototype.randomColor = function() {
   var colors = ['red', 'yellow', 'blue', 'red', 'green'];
 
   return colors[Math.floor(Math.random() * colors.length)];
-}
+};
 
 var gridGenerator = new GridGenerator(5, 5);
 
