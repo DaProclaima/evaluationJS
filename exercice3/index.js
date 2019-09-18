@@ -22,7 +22,7 @@ var MyMorpionXO =   {
 
       var cellID = i;
       cellID = cellID.toString();
-      this.cells[i].setAttribute('cellID', cellID);
+      this.cells[i].setAttribute('cell-id', cellID);
     }
     console.log(this.cells.length);
     document.querySelector('.endgame').style.display = "none";
@@ -38,17 +38,18 @@ var MyMorpionXO =   {
   },
 
   turnClick : function (cell) {
-    var cellID = cell.target.getAttribute('cellID');
-    console.log(MyMorpionXO.huPlayer);
-    // this.turn(cell.target.getAttribute('cellID'),this.huPlayer);
-    // console.log(cell);
+    // var cellID = cell.target.getAttribute('cell-id');
+    // console.log(MyMorpionXO.huPlayer + cell);
+    MyMorpionXO.turn(cell.target.getAttribute('cell-id'),MyMorpionXO.huPlayer);
   },
 
   turn : function (cellID, player){
     var cellNb = parseInt(cellID);
-    // this.origBoard[cellNb];
-    console.log(MyMorpionXO.origBoard[cellNb])
-    // document.querySelector('.cell').getAttribute('cellID');
+    // console.log(cellNb);
+    // console.log(MyMorpionXO.origBoard[cellNb]);
+    var cells = document.querySelectorAll('.cell')[cellNb].innerText = player;
+    // console.log(cells[cellNb]);
+    // cells[cellNb].innerText = player;
 // console.log()
   }
 
