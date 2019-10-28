@@ -48,10 +48,33 @@ var MyMorpionXO =   {
     // console.log(cellNb);
     // console.log(MyMorpionXO.origBoard[cellNb]);
     MyMorpionXO.cells[cellNb].innerText = player;
+    var gameWon = MyMorpionXO.checkWin(MyMorpionXO.origBoard,player)
+    if (gameWon){
+      MyMorpionXO.gameOver(gameWon);
+    }
     // console.log(cells[cellNb]);
     // cells[cellNb].innerText = player;
-  }
+  },
 
+  checkWin: function (board, player) {
+      var plays = board.reduce((a, e, i) =>
+        (e === player) ? a.concat(i) : a, new Array());
+    // var plays = board.reduce( function (a,e,i) {
+    //   if(e === player){
+    //     return  a.concat(i);
+    //   } else {
+    //     return  a = new Array();
+    //   }
+    // });
+    var gameWon = null;
+    for (var [index, win] of MyMorpionXO.winCombos.entries()) {
+      if( win.every(elem => plays.indexOf(elem > -1))) {
+        gameWon = {index: index, player: player};
+        break;
+      }
+    }
+    return gameWon;
+  }
 
 };
 
