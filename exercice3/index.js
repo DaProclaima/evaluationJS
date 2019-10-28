@@ -47,10 +47,9 @@ var MyMorpionXO =   {
     var cellNb = parseInt(cellID);
     // console.log(cellNb);
     // console.log(MyMorpionXO.origBoard[cellNb]);
-    var cells = document.querySelectorAll('.cell')[cellNb].innerText = player;
+    MyMorpionXO.cells[cellNb].innerText = player;
     // console.log(cells[cellNb]);
     // cells[cellNb].innerText = player;
-// console.log()
   }
 
 
