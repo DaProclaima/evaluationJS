@@ -48,7 +48,7 @@ var MyMorpionXO =   {
     // console.log(cellNb);
     // console.log(MyMorpionXO.origBoard[cellNb]);
     MyMorpionXO.cells[cellNb].innerText = player;
-    var gameWon = MyMorpionXO.checkWin(MyMorpionXO.origBoard,player)
+    var gameWon = MyMorpionXO.checkWin(MyMorpionXO.origBoard,player);
     if (gameWon){
       MyMorpionXO.gameOver(gameWon);
     }
@@ -57,24 +57,27 @@ var MyMorpionXO =   {
   },
 
   checkWin: function (board, player) {
-      var plays = board.reduce((a, e, i) =>
-        (e === player) ? a.concat(i) : a, new Array());
-    // var plays = board.reduce( function (a,e,i) {
-    //   if(e === player){
-    //     return  a.concat(i);
-    //   } else {
-    //     return  a = new Array();
-    //   }
-    // });
+    var plays = board.reduce((a, e, i) =>
+      (e === player) ? a.concat(i) : a, []);
+
     var gameWon = null;
     for (var [index, win] of MyMorpionXO.winCombos.entries()) {
-      if( win.every(elem => plays.indexOf(elem > -1))) {
+      if (win.every(elem => plays.indexOf(elem) > -1)) {
         gameWon = {index: index, player: player};
         break;
       }
     }
     return gameWon;
-  }
+  },
 
+  gameOver: function() {
+      for (var index of MyMorpionXO.winCombos[MyMorpionXO.checkWin.index]) {
+        MyMorpionXO.cells[index].style.backgroundColor =
+          MyMorpionXO.checkWin.player === MyMorpionXO.huPlayer ? "blue" : "red";
+      }
+      for (var i = 0; i < MyMorpionXO.cells.length; i++) {
+        MyMorpionXO.cells[i].removeEventListener("click", MyMorpionXO.turnClick, false)
+      }
+  }
 };
 
