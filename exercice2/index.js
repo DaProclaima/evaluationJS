@@ -15,6 +15,7 @@ var DrawBarre = function DrawBarre(el) {
  */
 DrawBarre.prototype.render = function () {
   this.el.appendChild(this.renderBarre(function() {
+
     this.loading();
   }.bind(this)));
 };
@@ -41,7 +42,6 @@ DrawBarre.prototype.renderBarre = function (callback) {
   this.elSegment.style.height = '30px';
   this.elSegment.style.width = '0%';
   this.elSegment.setAttribute('data-progress', '0');
-
 
 
   barre.appendChild(this.elSegment);

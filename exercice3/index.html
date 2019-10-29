@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tic-Tac Toe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div class="main">
+
+    <h1>Tic-Tac Toe</h1>
+    <table>
+      <tbody>
+        <tr><td class ="cell"></td><td class ="cell"></td><td class ="cell"></td></tr>
+        <tr><td class ="cell"></td><td class ="cell"></td><td class ="cell"></td></tr>
+        <tr><td class ="cell"></td><td class ="cell"></td><td class = "cell"></td></tr>
+      </tbody>
+    </table>
+    <div class="endgame">
+      <h2 class="msg-end-game">Joueur 1/2 a gagné.</h2>
+    </div>
+    <div>
+      <button onclick="MyMorpionXO.startGame()" id="replay">Replay</button>
+    </div>
+  </div>
+
+</body>
+<script rel="text/javascript" src="index.js"></script>
+</html>
