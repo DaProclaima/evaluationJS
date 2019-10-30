@@ -28,10 +28,28 @@ function renderWorldMap(){
         var svg = document.querySelector("#svg2");
         var svgT = obj.contentDocument.querySelector('svg');
         var paths = obj.contentDocument.querySelectorAll('svg path');
-        paths[0].style.fill = 'red'
-        console.log(svg);
-        console.log(svgT);
-        console.log(paths);
+
+        // console.log(svg);
+        // console.log(svgT);
+        // console.log(paths);
+        paths.forEach(function(path) {
+            path.addEventListener('click', function() {
+                colorRed(path)
+            });
+        });
+
+        paths.forEach(function(path) {
+            path.addEventListener('mouseover', function () {
+                path.style.fill = 'blue';
+            });
+        });
+
+        paths.forEach(function(path) {
+            path.addEventListener('mouseout', function(){
+                path.style.fill = '';
+            });
+        });
+
     }
     // obj.innerHTML= "<path\n"+
     //   "      id = \"country\" title=\"kalimantan\"\n" +
@@ -717,10 +735,8 @@ function renderWorldMap(){
     // This next line will just add it to the <body> tag
 
   }
-
 function colorRed(path) {
-    // path.
-
+    path.style.fill= "red";
 }
 
 renderWorldMap();
