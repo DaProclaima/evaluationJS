@@ -1,14 +1,38 @@
 'use strict';
 
 function renderWorldMap(){
+
     document.cookie = "SameSite=Lax";
+
     document.body.style.cssText= "position:absolute; width:100%; height:100%;margin:0;padding:0;";
+
     var obj = document.createElement("object");
-    // obj.setAttribute("viewBox","0 0 10 10");
-    // obj.setAttribute("width","100vw");
-    // obj.setAttribute("height","100vh");
     obj.setAttribute("type", "image/svg+xml");
     obj.setAttribute("data", "./assets/World_map_-_low_resolution.svg");
+    obj.style.cssText=
+      'background-color: black' +
+      'color: orange' +
+      'width: 100%;' +
+      'height: 100%;' +
+      '  margin: 25px auto;' +
+      '  stroke: #006600;' +
+      ':hover{fill: bleu;}';
+
+    console.log(obj);
+
+    document.body.appendChild(obj);
+
+    console.log("objDoc en dessous");
+
+    obj.onload = function() {
+        var svg = document.querySelector("#svg2");
+        var svgT = obj.contentDocument.querySelector('svg');
+        var paths = obj.contentDocument.querySelectorAll('svg path');
+        paths[0].style.fill = 'red'
+        console.log(svg);
+        console.log(svgT);
+        console.log(paths);
+    }
     // obj.innerHTML= "<path\n"+
     //   "      id = \"country\" title=\"kalimantan\"\n" +
     //   "      d=\"M781.68,324.4l-2.31,8.68l-12.53,4.23l-3.75-4.4l-1.82,0.5l3.4,13.12l5.09,0.57l6.79,2.57v2.57l3.11-0.57l4.53-6.27v-5.13l2.55-5.13l2.83,0.57l-3.4-7.13l-0.52-4.59L781.68,324.4L781.68,324.4z\" /><path\n" +
@@ -688,19 +712,15 @@ function renderWorldMap(){
     //   "      d=\"M516.76,230.59l1.63,0.05l0.68,1.01h2.37l1.58-0.58l0.53,0.64l-1.05,1.38l-4.63,0.16l-0.84-1.11l-0.89-0.53L516.76,230.59L516.76,230.59z\" /></svg>\n";
 
 
-    obj.style.cssText=
-      'background-color: black' +
-      'color: orange' +
-      'width: 100%;' +
-      'height: 100%;' +
-      '  margin: 25px auto;' +
-      '  stroke: #006600;' +
-      'obj path:hover{fill: bleu;}';
+
 
     // This next line will just add it to the <body> tag
-    document.body.appendChild(obj);
+
   }
 
+function colorRed(path) {
+    // path.
 
+}
 
 renderWorldMap();
